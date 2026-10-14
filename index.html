@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тёплая крошка — пекарня</title>
+<style>
+:root{--cream:#fbf4e9;--paper:#fffaf3;--ink:#34251e;--muted:#826f61;--brown:#8c4e32;--line:#eadbc9;--shadow:0 14px 35px #57341f17}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(ellipse at 8% 0%,#e6b37a2e,transparent 34rem),var(--cream);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif}
+.page{width:min(1080px,calc(100% - 36px));margin:auto}header{display:flex;align-items:center;justify-content:space-between;padding:25px 0;gap:18px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em;font-size:1.25rem}.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--brown);color:white;border-radius:14px;font-size:1.35rem}
+nav{display:flex;gap:22px;color:var(--muted);font-size:.93rem}nav a{color:inherit;text-decoration:none}nav a:hover{color:var(--brown)}
+.intro{text-align:center;padding:55px 0 30px}.eyebrow{display:inline-block;padding:7px 12px;border-radius:99px;background:#f3e3d0;color:var(--brown);font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+h1{font-size:clamp(2.35rem,6vw,4.3rem);line-height:1.02;letter-spacing:-.065em;margin:18px 0 14px}h1 span{color:var(--brown)}.intro p{color:var(--muted);max-width:520px;margin:auto;line-height:1.7}
+.menu-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:30px 0 17px}h2{margin:0;font-size:clamp(1.35rem,3vw,1.8rem);letter-spacing:-.04em}.hint{color:var(--muted);font-size:.88rem}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.product{appearance:none;border:1px solid var(--line);color:var(--ink);background:var(--paper);border-radius:20px;padding:12px;text-align:left;cursor:pointer;min-width:0;transition:transform .18s,box-shadow .18s,border-color .18s}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.product[aria-pressed=true]{border:2px solid var(--brown);padding:11px;box-shadow:var(--shadow)}
+.product-art{display:grid;place-items:center;aspect-ratio:1;background:#f3e4d1;border-radius:14px;font-size:clamp(2.8rem,6vw,4.6rem);margin-bottom:12px}.product:nth-child(2) .product-art{background:#f1d9c7}.product:nth-child(3) .product-art{background:#e9e4cf}.product:nth-child(4) .product-art{background:#f4e6b9}.product:nth-child(5) .product-art{background:#ead8ce}.product:nth-child(6) .product-art{background:#f1dfb9}.product:nth-child(7) .product-art{background:#e8d8c4}.product:nth-child(8) .product-art{background:#eed9b0}
+.product-name{display:block;font-weight:800;font-size:.98rem}.product-price{display:block;color:var(--brown);font-weight:800;margin-top:6px}
+.details{display:grid;grid-template-columns:155px 1fr auto;align-items:center;gap:22px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:20px;margin:20px 0 65px;box-shadow:var(--shadow);min-height:190px;animation:appear .22s ease-out}.detail-art{display:grid;place-items:center;background:#f3e4d1;border-radius:18px;min-height:145px;font-size:4.4rem}.detail-copy h3{margin:8px 0;font-size:1.55rem;letter-spacing:-.04em}.detail-copy p{color:var(--muted);line-height:1.65;margin:0}.tag{color:var(--brown);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.detail-price{text-align:right;white-space:nowrap}.detail-price strong{display:block;font-size:1.65rem}.detail-price small{color:var(--muted)}
+.footer{border-top:1px solid var(--line);color:var(--muted);padding:20px 0 28px;display:flex;justify-content:space-between;gap:12px;font-size:.85rem}@keyframes appear{from{opacity:.5}to{opacity:1}}
+@media(max-width:760px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.details{grid-template-columns:105px 1fr;gap:14px;padding:14px}.detail-art{min-height:110px;font-size:3.2rem}.detail-price{grid-column:2;text-align:left;display:flex;align-items:baseline;gap:9px}.detail-price strong{font-size:1.25rem}nav{gap:12px;font-size:.82rem}}
+@media(max-width:430px){.page{width:calc(100% - 24px)}header{align-items:flex-start;flex-direction:column}.intro{padding-top:38px}.menu-heading{align-items:flex-start;flex-direction:column;gap:7px}.product{padding:9px;border-radius:16px}.product[aria-pressed=true]{padding:8px}.product-art{border-radius:11px}.details{grid-template-columns:1fr}.detail-art{min-height:125px}.detail-price{grid-column:auto}.footer{flex-direction:column}}
+</style>
+</head>
+<body><div class="page">
+<header><div class="brand"><span class="brand-mark">✳</span> Тёплая крошка</div><nav aria-label="Навигация"><a href="#menu">Выпечка</a><a href="#about">О пекарне</a></nav></header>
+<main><section class="intro" id="about"><span class="eyebrow">Свежая выпечка каждый день</span><h1>Маленькие радости,<br><span>испечённые с теплом.</span></h1><p>Ароматный хлеб, нежные булочки и любимые десерты — выбирайте то, что сделает ваш день вкуснее.</p></section>
+<section id="menu" aria-labelledby="menu-title"><div class="menu-heading"><h2 id="menu-title">Выберите свою выпечку</h2><span class="hint">Нажмите на карточку — подробности появятся ниже</span></div>
+<div class="products" id="products">
+<button class="product" data-item="0" aria-pressed="true"><span class="product-art">🥐</span><span class="product-name">Круассан</span><span class="product-price">3,20 €</span></button>
+<button class="product" data-item="1" aria-pressed="false"><span class="product-art">🍞</span><span class="product-name">Хлеб на закваске</span><span class="product-price">4,50 €</span></button>
+<button class="product" data-item="2" aria-pressed="false"><span class="product-art">🥨</span><span class="product-name">Крендель</span><span class="product-price">2,40 €</span></button>
+<button class="product" data-item="3" aria-pressed="false"><span class="product-art">🧁</span><span class="product-name">Ванильный кекс</span><span class="product-price">3,00 €</span></button>
+<button class="product" data-item="4" aria-pressed="false"><span class="product-art">🍪</span><span class="product-name">Шоколадное печенье</span><span class="product-price">1,80 €</span></button>
+<button class="product" data-item="5" aria-pressed="false"><span class="product-art">🍰</span><span class="product-name">Чизкейк</span><span class="product-price">4,20 €</span></button>
+<button class="product" data-item="6" aria-pressed="false"><span class="product-art">🥧</span><span class="product-name">Яблочный пирог</span><span class="product-price">3,80 €</span></button>
+<button class="product" data-item="7" aria-pressed="false"><span class="product-art">🍩</span><span class="product-name">Пончик с глазурью</span><span class="product-price">2,20 €</span></button>
+</div>
+<article class="details" id="details" aria-live="polite"><div class="detail-art" id="detail-art">🥐</div><div class="detail-copy"><span class="tag" id="detail-tag">Хит пекарни</span><h3 id="detail-name">Классический круассан</h3><p id="detail-description">Хрустящая золотистая корочка, нежные слои и сливочный аромат. Выпекаем небольшими партиями каждое утро.</p></div><div class="detail-price"><strong id="detail-price">3,20 €</strong><small>за штуку</small></div></article>
+</section></main>
+<footer class="footer"><span>© 2026 Тёплая крошка · Учебный макет</span><span>Испечено с любовью к деталям</span></footer></div>
+<script>
+const items=[
+{icon:"🥐",name:"Классический круассан",price:"3,20 €",tag:"Хит пекарни",description:"Хрустящая золотистая корочка, нежные слои и сливочный аромат. Выпекаем небольшими партиями каждое утро."},
+{icon:"🍞",name:"Хлеб на закваске",price:"4,50 €",tag:"Долгая ферментация",description:"Румяная корочка, воздушный мякиш и лёгкая кислинка. Только мука, вода, соль и время."},
+{icon:"🥨",name:"Крендель с солью",price:"2,40 €",tag:"Классика",description:"Мягкий внутри, с аппетитной корочкой снаружи и щепоткой крупной соли сверху."},
+{icon:"🧁",name:"Ванильный кекс",price:"3,00 €",tag:"Нежный десерт",description:"Пышный кекс с натуральной ванилью и лёгкой сладостью — идеально к чашке кофе."},
+{icon:"🍪",name:"Шоколадное печенье",price:"1,80 €",tag:"Свежая партия",description:"Слегка хрустящее по краям и мягкое внутри, с кусочками тёмного шоколада."},
+{icon:"🍰",name:"Чизкейк",price:"4,20 €",tag:"Любимец гостей",description:"Кремовая сырная начинка на тонкой песочной основе. Нежный вкус без лишней сладости."},
+{icon:"🥧",name:"Яблочный пирог",price:"3,80 €",tag:"Домашний рецепт",description:"Сочные яблоки, тёплая корица и рассыпчатое тесто — уютный десерт на каждый день."},
+{icon:"🍩",name:"Пончик с глазурью",price:"2,20 €",tag:"Сладкое настроение",description:"Воздушное тесто и тонкая сладкая глазурь. Хорошее настроение в каждом кусочке."}];
+const buttons=document.querySelectorAll(".product");
+function selectItem(index){const item=items[index];buttons.forEach((button,i)=>button.setAttribute("aria-pressed",String(i===index)));document.getElementById("detail-art").textContent=item.icon;document.getElementById("detail-name").textContent=item.name;document.getElementById("detail-price").textContent=item.price;document.getElementById("detail-tag").textContent=item.tag;document.getElementById("detail-description").textContent=item.description}
+buttons.forEach(button=>button.addEventListener("click",()=>selectItem(Number(button.dataset.item))));
+</script></body></html>
