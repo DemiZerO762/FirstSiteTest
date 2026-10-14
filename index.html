@@ -18,6 +18,36 @@ h1{font-size:clamp(2.35rem,6vw,4.3rem);line-height:1.02;letter-spacing:-.065em;m
 .product-name{display:block;font-weight:800;font-size:.98rem}.product-price{display:block;color:var(--brown);font-weight:800;margin-top:6px}
 .details{display:grid;grid-template-columns:155px 1fr auto;align-items:center;gap:22px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:20px;margin:20px 0 65px;box-shadow:var(--shadow);min-height:190px;animation:appear .22s ease-out}.detail-art{display:grid;place-items:center;background:#f3e4d1;border-radius:18px;min-height:145px;font-size:4.4rem}.detail-copy h3{margin:8px 0;font-size:1.55rem;letter-spacing:-.04em}.detail-copy p{color:var(--muted);line-height:1.65;margin:0}.tag{color:var(--brown);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.detail-price{text-align:right;white-space:nowrap}.detail-price strong{display:block;font-size:1.65rem}.detail-price small{color:var(--muted)}
 .footer{border-top:1px solid var(--line);color:var(--muted);padding:20px 0 28px;display:flex;justify-content:space-between;gap:12px;font-size:.85rem}@keyframes appear{from{opacity:.5}to{opacity:1}}
+
+/* Дополнительные анимации и плавная рамка выбора */
+.intro{animation:hero-in .8s cubic-bezier(.2,.75,.25,1) both}
+.eyebrow{animation:badge-in .65s .12s both}
+.brand-mark{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.brand:hover .brand-mark{transform:rotate(-12deg) scale(1.1);box-shadow:0 7px 18px #8c4e3240}
+nav a{transition:color .2s,transform .2s}
+nav a:hover{transform:translateY(-2px)}
+.products{position:relative;isolation:isolate}
+.product{position:relative;z-index:1;overflow:hidden;border:1px solid transparent;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .25s,background .25s}
+.product::after{content:"";position:absolute;inset:-70% auto -70% -55%;width:38%;background:linear-gradient(90deg,transparent,#fff9,transparent);transform:translateX(-220%) rotate(18deg);transition:transform .7s;pointer-events:none}
+.product:hover::after{transform:translateX(560%) rotate(18deg)}
+.product:hover{transform:translateY(-5px) scale(1.015);box-shadow:0 16px 32px #57341f20}
+.product[aria-pressed=true]{border-color:transparent;padding:12px;background:#fffdf8;box-shadow:0 10px 26px #8c4e3220}
+.product-art{transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s}
+.product:hover .product-art{transform:translateY(-3px) rotate(-3deg) scale(1.06);filter:saturate(1.12)}
+.selection-frame{position:absolute;z-index:3;top:0;left:0;width:0;height:0;border:2px solid var(--brown);border-radius:20px;pointer-events:none;box-shadow:0 0 0 4px #8c4e3210,0 7px 20px #8c4e3220;transition:transform .48s cubic-bezier(.22,1,.36,1),width .32s cubic-bezier(.22,1,.36,1),height .32s cubic-bezier(.22,1,.36,1);will-change:transform,width,height}
+.details{animation:detail-in .45s cubic-bezier(.2,.8,.2,1) both}
+.details.is-changing .detail-art{animation:art-pop .48s cubic-bezier(.2,.8,.2,1) both}
+.details.is-changing .detail-copy,.details.is-changing .detail-price{animation:copy-in .38s ease both}
+.details.is-changing .detail-price{animation-delay:.05s}
+.detail-art{transition:background .3s,transform .3s}
+.product:focus-visible{outline:3px solid #c58b61;outline-offset:4px}
+@keyframes hero-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes badge-in{from{opacity:0;transform:translateY(8px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes detail-in{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes art-pop{0%{transform:scale(.7) rotate(-8deg);opacity:.4}65%{transform:scale(1.12) rotate(3deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes copy-in{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
 @media(max-width:760px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.details{grid-template-columns:105px 1fr;gap:14px;padding:14px}.detail-art{min-height:110px;font-size:3.2rem}.detail-price{grid-column:2;text-align:left;display:flex;align-items:baseline;gap:9px}.detail-price strong{font-size:1.25rem}nav{gap:12px;font-size:.82rem}}
 @media(max-width:430px){.page{width:calc(100% - 24px)}header{align-items:flex-start;flex-direction:column}.intro{padding-top:38px}.menu-heading{align-items:flex-start;flex-direction:column;gap:7px}.product{padding:9px;border-radius:16px}.product[aria-pressed=true]{padding:8px}.product-art{border-radius:11px}.details{grid-template-columns:1fr}.detail-art{min-height:125px}.detail-price{grid-column:auto}.footer{flex-direction:column}}
 </style>
@@ -27,6 +57,7 @@ h1{font-size:clamp(2.35rem,6vw,4.3rem);line-height:1.02;letter-spacing:-.065em;m
 <main><section class="intro" id="about"><span class="eyebrow">Свежая выпечка каждый день</span><h1>Маленькие радости,<br><span>испечённые с теплом.</span></h1><p>Ароматный хлеб, нежные булочки и любимые десерты — выбирайте то, что сделает ваш день вкуснее.</p></section>
 <section id="menu" aria-labelledby="menu-title"><div class="menu-heading"><h2 id="menu-title">Выберите свою выпечку</h2><span class="hint">Нажмите на карточку — подробности появятся ниже</span></div>
 <div class="products" id="products">
+<span class="selection-frame" id="selection-frame" aria-hidden="true"></span>
 <button class="product" data-item="0" aria-pressed="true"><span class="product-art">🥐</span><span class="product-name">Круассан</span><span class="product-price">3,20 €</span></button>
 <button class="product" data-item="1" aria-pressed="false"><span class="product-art">🍞</span><span class="product-name">Хлеб на закваске</span><span class="product-price">4,50 €</span></button>
 <button class="product" data-item="2" aria-pressed="false"><span class="product-art">🥨</span><span class="product-name">Крендель</span><span class="product-price">2,40 €</span></button>
@@ -49,7 +80,37 @@ const items=[
 {icon:"🍰",name:"Чизкейк",price:"4,20 €",tag:"Любимец гостей",description:"Кремовая сырная начинка на тонкой песочной основе. Нежный вкус без лишней сладости."},
 {icon:"🥧",name:"Яблочный пирог",price:"3,80 €",tag:"Домашний рецепт",description:"Сочные яблоки, тёплая корица и рассыпчатое тесто — уютный десерт на каждый день."},
 {icon:"🍩",name:"Пончик с глазурью",price:"2,20 €",tag:"Сладкое настроение",description:"Воздушное тесто и тонкая сладкая глазурь. Хорошее настроение в каждом кусочке."}];
-const buttons=document.querySelectorAll(".product");
-function selectItem(index){const item=items[index];buttons.forEach((button,i)=>button.setAttribute("aria-pressed",String(i===index)));document.getElementById("detail-art").textContent=item.icon;document.getElementById("detail-name").textContent=item.name;document.getElementById("detail-price").textContent=item.price;document.getElementById("detail-tag").textContent=item.tag;document.getElementById("detail-description").textContent=item.description}
+const buttons=[...document.querySelectorAll(".product")];
+const products=document.getElementById("products");
+const frame=document.getElementById("selection-frame");
+const details=document.getElementById("details");
+let selectedIndex=0;
+function moveFrame(index,instant=false){
+  const button=buttons[index];
+  if(!button||!frame)return;
+  const x=button.offsetLeft, y=button.offsetTop;
+  frame.style.width=button.offsetWidth+"px";
+  frame.style.height=button.offsetHeight+"px";
+  if(instant){frame.style.transition="none";frame.style.transform="translate3d("+x+"px,"+y+"px,0)";frame.offsetHeight;frame.style.transition="";}
+  else frame.style.transform="translate3d("+x+"px,"+y+"px,0)";
+}
+function selectItem(index){
+  const item=items[index];
+  if(!item)return;
+  selectedIndex=index;
+  buttons.forEach((button,i)=>button.setAttribute("aria-pressed",String(i===index)));
+  moveFrame(index);
+  document.getElementById("detail-art").textContent=item.icon;
+  document.getElementById("detail-name").textContent=item.name;
+  document.getElementById("detail-price").textContent=item.price;
+  document.getElementById("detail-tag").textContent=item.tag;
+  document.getElementById("detail-description").textContent=item.description;
+  details.classList.remove("is-changing");
+  void details.offsetWidth;
+  details.classList.add("is-changing");
+}
 buttons.forEach(button=>button.addEventListener("click",()=>selectItem(Number(button.dataset.item))));
+window.addEventListener("resize",()=>moveFrame(selectedIndex,true));
+if("ResizeObserver" in window){new ResizeObserver(()=>moveFrame(selectedIndex,true)).observe(products);}
+requestAnimationFrame(()=>moveFrame(0,true));
 </script></body></html>
